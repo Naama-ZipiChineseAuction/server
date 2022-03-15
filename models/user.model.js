@@ -5,7 +5,7 @@ const userSchema=new mongoose.Schema({
     user_first_name:String,
     user_last_name:String,
     user_phone:String,
-    arr_orders:orderSchema
+    arr_orders:[orderSchema]
 
 
 })
