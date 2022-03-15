@@ -1,10 +1,3 @@
-// const mongoose = require("mongoose");
-// const { Author } = require("./models/author.model");
-// const { Book } = require("./models/book.model");
-
-// mongoose.connect("mongodb://localhost:27017/bookShop").then(() => {
-//     console.log("connted to moingo db")
-// })
 const mongoose=require("mongoose")
 const { Product}=require("./models/products.model")
 const { Wining}=require("./models/winning.model")
