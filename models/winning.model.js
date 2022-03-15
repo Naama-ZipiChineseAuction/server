@@ -10,5 +10,6 @@ const winningSchema=new mongoose.Schema({
     },
     winingDate:Date
 })
+
 const Wining=mongoose.model("winings",winningSchema)
 module.exports={winningSchema,Wining}
