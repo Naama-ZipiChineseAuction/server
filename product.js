@@ -1,11 +1,8 @@
 
 const {Product}=require("./models/products.model")
-
-const CircularJSON = require('circular-json');
-
-//const json = CircularJSON.stringify(obj);
 const express = require('express')
-////א יכולה להתכתב אפילו שאין כאן מיל!!!!!!!!!!//const db = require("./db")
+//const CircularJSON = require('circular-json');
+//const json = CircularJSON.stringify(obj);
 const app = express()
 // need for use with body
 //app.use(express.json())
@@ -20,8 +17,8 @@ app.get("/",async function (req, res)  {
 app.get("/product", async function (req, res)   {
     console.log("llllllllllllllll")
    // res.status(200).send("You used in nodeJs expressjjj")
-    const arr=  Product.find({})
+   // const arr=  Product.find({})
     // res.status(200).send(arr)
-     res.status(200).send(JSON.stringify(arr))
+     res.status(200).send("hello")
 })
 console.log("hfcgg")
