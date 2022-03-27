@@ -1,28 +1,42 @@
 const express = require('express')
 const router = express.Router()
 const { Product } = require("../models/products.model");
-// http://localhost:4500/items/1
-router.get('/products/getById/:id', async function (req, res) {
-    // put here get items from mongo db
-    res.send("get produuct by id")
-})
 
-router.get('/products/getAllProducts', async function (req, res) {
-    res.status(200).send("show all product")
+module.exports.getById = async function (req, res) {
 
-})
-router.get('/products/addProduct', async function (req, res) {
-    const pAdd = req.body
-    if (!pAdd) {
-        res.status(400).send("product blank")
-        return
+}
+module.exports.getallProducts = async (req, res) => {
+    let arr = await Product.find({})
+    res.send(arr)
+}
+module.exports.deleteProduct = async (req, res) => {
+    let productId = req.params.id;
+    try {
+        const a = await Product.findByIdAndRemove(productId)
+        console.log(a);
+        return res.send(a);
     }
-  let p=new Product(pAdd)
-  await p.save()
-  res.status(200).send("add product")
-
-})
-router.delete("", async function(req,res) {
-    res.status(200).send("delete product")
-})
-module.exports = router;
+    catch (e) {
+        console.log(e);
+        return res.status(400).send(e);
+    }
+}
+module.exports.getProductById=async(req,res)=>{
+    let productId = req.params.id;
+    let a=await Product.findById(productId)
+    return res.send(a);
+   
+}
+module.exports.addProduct = async (req, res) => {
+    let pro = req.body;
+    let a = new Product(pro)
+    try {
+        await a.save();
+        console.log(a)
+        return res.send(a);
+    }
+    catch(e){
+        console.log(e);
+        return res.status(400).send(e);  
+    }
+}
