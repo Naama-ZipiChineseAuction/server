@@ -1,7 +1,9 @@
+
 const express = require('express')
 const cors = require('cors')
-const productRout=require("./routes/product")
-const wininnigRout=require("./routes/winning")
+const users = require('./controllers/users')
+const products=require("./controllers/products")
+const winnings=require("./controllers/winning")
 const userRout=require("./routes/users")
 const { default: mongoose } = require('mongoose')
 const app = express()
@@ -11,8 +13,7 @@ mongoose.connect("mongodb://localhost:27017/ChineseAuction")
     .then(() => { console.log("mongo db connected"); })
     .catch(er => { console.log(er) });
 app.use("/user", userRout)
-app.use("/products",productRout)
-app.use("/winnings",wininnigRout)
+
 app.get('/', async function (req, res) {
     res.send("ברוך הבא למכירה הסינית")
 })
