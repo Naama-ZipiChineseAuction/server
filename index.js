@@ -3,9 +3,13 @@ const cors = require('cors')
 const users = require('./controllers/users')
 const products=require("./controllers/products")
 const winnings=require("./controllers/winning")
+const { default: mongoose } = require('mongoose')
 const app = express()
 app.use(express.json())
 app.use(cors())
+mongoose.connect("mongodb://localhost:27017/ChineseAuction")
+    .then(() => { console.log("mongo db connected"); })
+    .catch(er => { console.log(er) });
 // controllers
 //app.use(product)
 app.use(users)
