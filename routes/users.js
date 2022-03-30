@@ -5,4 +5,5 @@ router.get("/getProduct/:id",userController.getProductById)
 router.post("/addUser",userController.addUser)
 
 router.post("/addOrder",userController.getAllUser)
+router.get("/getAllUsers",userController.getAllUser)
 module.exports = router;
