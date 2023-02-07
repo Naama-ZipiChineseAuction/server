@@ -10,9 +10,8 @@ module.exports.getallProducts = async (req, res) => {
 module.exports.deleteProduct = async (req, res) => {
     let productId = req.params.id;
     try {
-        const a = await Product.findByIdAndRemove(productId)
-        console.log(a);
-        return res.send(a);
+        const product = await Product.findByIdAndRemove(productId)
+        return res.send(product);
     }
     catch (e) {
         console.log(e);
@@ -21,19 +20,17 @@ module.exports.deleteProduct = async (req, res) => {
 }
 module.exports.getProductById = async (req, res) => {
     let productId = req.params.id;
-    debugger
     console.log(productId)
-        let a = await Product.findById(productId)
-        return res.send(a);
+    let product = await Product.findById(productId)
+    return res.send(product);
 
 }
 module.exports.addProduct = async (req, res) => {
     let pro = req.body;
-    let a = new Product(pro)
+    let product = new Product(pro)
     try {
-        await a.save();
-        console.log(a)
-        return res.status(200).send(a);
+        await product.save();
+        return res.status(200).send(product);
     }
     catch (e) {
         console.log(e);
