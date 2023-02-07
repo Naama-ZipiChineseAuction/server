@@ -2,12 +2,10 @@ const express = require('express')
 const router = express.Router()
 const { Product } = require("../models/products.model");
 
-module.exports.getById = async function (req, res) {
 
-}
 module.exports.getallProducts = async (req, res) => {
     let arr = await Product.find({})
-    res.send(arr)
+    res.status(200).send(arr)
 }
 module.exports.deleteProduct = async (req, res) => {
     let productId = req.params.id;
@@ -21,11 +19,13 @@ module.exports.deleteProduct = async (req, res) => {
         return res.status(400).send(e);
     }
 }
-module.exports.getProductById=async(req,res)=>{
+module.exports.getProductById = async (req, res) => {
     let productId = req.params.id;
-    let a=await Product.findById(productId)
-    return res.send(a);
-   
+    debugger
+    console.log(productId)
+        let a = await Product.findById(productId)
+        return res.send(a);
+
 }
 module.exports.addProduct = async (req, res) => {
     let pro = req.body;
@@ -33,10 +33,10 @@ module.exports.addProduct = async (req, res) => {
     try {
         await a.save();
         console.log(a)
-        return res.send(a);
+        return res.status(200).send(a);
     }
-    catch(e){
+    catch (e) {
         console.log(e);
-        return res.status(400).send(e);  
+        return res.status(400).send(e);
     }
 }
